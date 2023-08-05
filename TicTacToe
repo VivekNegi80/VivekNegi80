@@ -1,0 +1,118 @@
+import java.util.Scanner;
+public class tictactoe
+{
+    public static char currentPlayer='X';
+    public static char board[][]=new char[3][3];
+        public static boolean flag=false;
+    public static void main(String[]args)
+    {
+        for(int i=0;i<board.length;i++)
+        {                                          
+            for(int j=0;j<board[i].length;j++)
+            {
+                board[i][j]=' ';
+            }
+        }
+        while(flag!=true)
+        {
+        takeInput();
+        printBoard();
+        flag=haveWon();
+        if(flag==true)
+        {
+        System.out.println("Player  "+currentPlayer +" won");
+        }
+        switchPlayer();
+        }
+    }
+    public static void printBoard()
+    {
+        for(int i=0;i<board.length;i++)
+        {
+            for(int j=0;j<board[i].length;j++)
+            {
+                System.out.print(board[i][j]);
+                if(j!=2)
+                {
+                System.out.print("|");
+                }
+            }
+    System.out.println();
+    System.out.println("----");
+    }
+}
+    public static void takeInput()
+    {
+        Scanner in=new Scanner(System.in);   
+        System.out.println("Player  "+currentPlayer+"  enter your choice");
+        int user=in.nextInt();
+        switch(user)
+        {
+            case 1:
+            board[0][0]=currentPlayer;
+            break;
+            case 2:
+            board[0][1]=currentPlayer;
+            break;
+            case 3:
+            board[0][2]=currentPlayer;
+            break;
+            case 4:
+            board[1][0]=currentPlayer;
+            break;
+            case 5:
+            board[1][1]=currentPlayer;
+            break;
+            case 6:
+            board[1][2]=currentPlayer;
+            break;
+            case 7:
+            board[2][0]=currentPlayer;
+            break;
+            case 8:
+            board[2][1]=currentPlayer;
+            break;
+            case 9:
+            board[2][2]=currentPlayer;
+            break;
+            default:
+            System.out.println("enter valid input");
+        }
+    }
+    public static boolean haveWon()
+    {
+        for(int j=0;j<board.length;j++)
+        {
+            if((board[0][j]==currentPlayer)&&(board[1][j]==currentPlayer)&&(board[2][j]==currentPlayer))
+            {
+                return true;
+            }
+        }
+        for(int i=0;i<board.length;i++)
+        {
+            if((board[i][0]==currentPlayer) && (board[i][1]==currentPlayer)&&(board[i][2]==currentPlayer))
+            {
+                return true;
+            }
+            
+        }
+        
+            
+           if((board[0][0]==currentPlayer)&&(board[1][1]==currentPlayer)&&(board[2][2]==currentPlayer))
+           { 
+            return true;
+           }
+           if((board[0][2]==currentPlayer)&&(board[1][1]==currentPlayer)&&(board[2][0]==currentPlayer))
+           { 
+            return true;
+           }
+          
+            return false;
+    }
+    public static void switchPlayer()
+    {
+        currentPlayer=(currentPlayer=='X')?'0':'X';
+    }
+   
+}
+
